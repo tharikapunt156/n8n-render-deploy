@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: n8n
+    env: docker
+    repo: https://github.com/n8n-io/n8n-docker-caddy.git # Or your forked repo
+    region: singapore
+    plan: free
+    healthCheckPath: /healthz
+    envVars:
+      - key: N8N_HOST
+        sync: false
+      - key: WEBHOOK_URL
+        sync: false
+    disk:
+      name: n8n-data
+      mountPath: /data
+      sizeGB: 1
